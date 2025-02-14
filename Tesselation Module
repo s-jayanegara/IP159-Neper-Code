@@ -1,1 +1,7 @@
+% Polycrystal Model Creation Process
+
+% Run Tesselation Module
 neper -T -n 100::from_morpho -id 4::1 -morpho "diameq:lognormal(1,0.1),sphericity:lognormal(0.855,0.03)::lamellar(w=msfile(lamwidthpy),v=msfile(lamnormalpy))" -reg 1 -sel 0.004 -format tess,ori -o Polycrystal_Laminated_Poster
+
+% Run Visualization Module
+neper -V Polycrystal_Laminated_Poster.tess -datacellcol id -datacelltrs 0.5 -print Polycrystal_Laminated_Poster_Img
