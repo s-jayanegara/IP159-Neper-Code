@@ -1,0 +1,10 @@
+% Create Small Scale Model
+
+% Run Tesselation Module
+neper -T -n 10::from_morpho -id 4::1 -morpho "diameq:lognormal(1,0.1),sphericity:lognormal(0.855,0.03)::lamellar(w=msfile(lamwidth),v=msfile(lamnormal))" -reg 1 -sel 0.004 -format tess,ori -o Polycrystal_Laminated
+
+% Run Meshing Module
+neper -M Polycrystal_Laminated.tess -order 2 -cl 0.045 -meshqualexpr Odis -meshqualmin 1
+
+% Run Visualization Module
+neper -V Polycrystal_Laminated.tess,Polycrystal_Laminated.msh -dataelsetcol id -print Polycrystal_Laminated_Mesh_Img
